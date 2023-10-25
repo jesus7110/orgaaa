@@ -1,0 +1,1 @@
+{"name":"orgaaa_backend","version":"1.0.0","main":"index.js","dependencies":{"colors":"^1.4.0","dotenv":"^16.3.1","express":"^4.18.2","mongodb":"^6.2.0","mongoose":"^7.6.3","node":"^21.0.0","nodemon":"^3.0.1"},"scripts":{"test":"echo \"Error: no test specified\" && exit 1"},"author":"","license":"ISC","description":""}
