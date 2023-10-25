@@ -9,4 +9,12 @@ app.get('/', function (req, res) {
 })
 //mongoDB connectiongit
 connectDB();
-app.listen(3000)
+
+// Import the userController
+const userController = require('./controllers/userController');
+
+// Define routes and associate them with controller functions
+app.post('/users', userController.createUser); // Create a new user
+app.get('/users', userController.getAllUsers); // Get all users
+
+app.listen(process.env.PORT || 5000)
