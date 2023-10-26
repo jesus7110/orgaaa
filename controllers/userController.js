@@ -1,23 +1,44 @@
-const User = require('../models/userModel');
+const userModel = require('../models/userModel');
+const otpGenerator = require('otp-generator');
 
-// Function to create and store user data
-async function createUser(req, res) {
+const createUser = async (req,res) => {
   try {
-    const newUser = await User.create(req.body);
-    res.status(201).json(newUser);
+    const exisitingUser = await userModel.findOne({ mobile: req.body.mobilenumber });
+    if (exisitingUser) {
+      return res
+        .status(200)
+        .send({ message: "User Already Exist", success: false });
+    }
+    const newUser = new userModel(req.body);
+    
+    await newUser.save();
+    res.status(201).send({ message: "Register Sucessfully", success: true }); 
+    
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: `Register Controller ${error.message}`,
+    });
   }
-}
-
+};
 // Function to fetch all user data
-async function getAllUsers(req, res) {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-}
 
-module.exports = { createUser, getAllUsers };
+
+//function to genrate login-signup otp
+const generateOTP = (req,res) => {
+  try {
+    const genaratedOTP = otpGenerator.generate(6, { upperCaseAlphabets: false, specialChars: false });
+    console.log(genaratedOTP);
+    res.status(201).send({ message: "OTP genarated Sucessfully", success: true }); 
+     
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: `OTP Generator ${error.message}`,
+    });
+  }
+};
+
+module.exports = { createUser, generateOTP};
