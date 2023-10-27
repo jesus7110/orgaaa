@@ -22,7 +22,7 @@ const createUser = async (req,res) => {
       message: `Register Controller ${error.message}`,
     });
   }
-};
+};// Function to fetch all user data
 
 
 // Function to fetch all user data
