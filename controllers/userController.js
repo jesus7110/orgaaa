@@ -25,7 +25,8 @@ const createUser = async (req,res) => {
 };
 
 
-
+// Function to fetch all user data
+// Function to fetch all user data
 //function to genrate login-signup otp
 /*const generateOTP = (req,res) => {
   try {
