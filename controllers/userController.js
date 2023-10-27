@@ -1,5 +1,6 @@
 const userModel = require('../models/userModel');
-const otpGenerator = require('otp-generator');
+//const otpGenerator = require('otp-generator');
+const { otpGen } = require('otp-gen-agent');
 
 const createUser = async (req,res) => {
   try {
@@ -26,7 +27,7 @@ const createUser = async (req,res) => {
 
 
 //function to genrate login-signup otp
-const generateOTP = (req,res) => {
+/*const generateOTP = (req,res) => {
   try {
     const genaratedOTP = otpGenerator.generate(6, { upperCaseAlphabets: false, specialChars: false });
     console.log(genaratedOTP);
@@ -39,6 +40,20 @@ const generateOTP = (req,res) => {
       message: `OTP Generator ${error.message}`,
     });
   }
-};
+};*/
+
+const generateOTP = async (req,res) => {
+  try{
+    const otp = await otpGen({length: 4, chars: 'abc123'});
+    console.log(otp);
+    res.status(201).send({ message: "OTP genarated Sucessfully", success: true }); 
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: `OTP Generator ${error.message}`,
+    });
+  }
+}
 
 module.exports = { createUser, generateOTP};
