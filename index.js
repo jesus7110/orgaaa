@@ -13,6 +13,8 @@ connectDB();
 // Import the userController
 const userController = require('./controllers/userController');
 
+//import productcontroller
+
 // Define routes and associate them with controller functions
 app.post('/users', userController.createUser); // Create a new user
 //app.get('/users', userController.getAllUsers); // Get all users
