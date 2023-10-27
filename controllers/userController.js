@@ -23,7 +23,7 @@ const createUser = async (req,res) => {
     });
   }
 };
-// Function to fetch all user data
+
 
 
 //function to genrate login-signup otp
