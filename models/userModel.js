@@ -5,11 +5,10 @@ const userSchema = new mongoose.Schema({
   emailid: { type: String},
   isavailable: { type: Boolean, default: true },
   homeno: { type: String },
-  buildingname: { type: String },
   streetname: { type: String },
   landmark: { type: String },
   pincode: { type: String },
-  district: { type: String },
+  city: { type: String },
   state: { type: String },
   
   
