@@ -11,6 +11,7 @@ app.get('/', function (req, res) {
 //mongoDB connectiongit
 connectDB();
 
-
+//router
+app.use('/api/user',userRouter)
 
 app.listen(process.env.PORT || 5000)

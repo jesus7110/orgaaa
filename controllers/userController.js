@@ -63,4 +63,11 @@ const generateOTP = async (req,res) => {
   }
 }*/
 
+module.exports.signUp = async (req,res) => {
+
+}
+
+module.exports.verifyOtp = async (req,res) => {
+  
+}
 module.exports = { createUser, generateOTP};
