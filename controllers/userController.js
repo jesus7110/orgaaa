@@ -45,7 +45,7 @@ const createUser = async (req,res) => {
 
 const generateOTP = async (req,res) => {
   try{
-    const otp = await otpGen({length: 4, chars: 'abc123'});
+    const otp = await otpGen({length: 5, chars: 'abc123'});
     console.log(otp);
     res.status(201).send({ message: "OTP genarated Sucessfully", success: true }); 
   } catch (error) {
