@@ -1,5 +1,5 @@
-const{ user } = require('../models/user');
-const { otp } = require('../models/otpModel ')
+const{ User } = require('../models/user');
+const { Otp } = require('../models/otpModel ')
 const otpGenerator = require('otp-generator');
 const bcrypt = require("bcrypt");
 const axios = require("axios")
@@ -9,13 +9,13 @@ const _= require("lodash")
 
 const createUser = async (req,res) => {
   try {
-    const exisitingUser = await user.findOne({ mobile: req.body.mobilenumber });
+    const exisitingUser = await User.findOne({ mobile: req.body.mobilenumber });
     if (exisitingUser) {
       return res
         .status(200)
         .send({ message: "User Already Exist", success: false });
     }
-    const newUser = new user(req.body);
+    const newUser = new User(req.body);
     
     await newUser.save();
     res.status(201).send({ message: "Register Sucessfully", success: true }); 
@@ -64,10 +64,26 @@ const generateOTP = async (req,res) => {
 }*/
 
 module.exports.signUp = async (req,res) => {
+  const user = await UserActivation.findOne({
+    number: req.body.number
+  })
+  if (user) return res.status(400).send("User already registered!");
+  const OTP = otpGenerator.generate(5, {
+    digits: true, alphabets: false, upperCase: false, specialChars:false
+  });
+
+  const number = req.body.number;
+  console.log(OTP);
+  const otp = new Otp({number: number, otp: OTP});
+  const salt = await bcrypt.genSalt(10)
+  otp.otp = await bcrypt.hash(otp.otp, salt);
+  const result = await otp.save();
+  return res.status(200).send("Otp send successfully!");
+
 
 }
 
 module.exports.verifyOtp = async (req,res) => {
-  
+
 }
 module.exports = { createUser, generateOTP};
