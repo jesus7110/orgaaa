@@ -1,4 +1,5 @@
-const user = require('../models/user');
+const{ user } = require('../models/user');
+const { otp } = require('../models/otpModel ')
 const otpGenerator = require('otp-generator');
 const bcrypt = require("bcrypt");
 const axios = require("axios")
