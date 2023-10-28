@@ -1,9 +1,9 @@
-
-const { Schema, model } =require('mongoose');
+const { Schema, model } = require('mongoose');
 const jwt = require('jsonwebtoken');
 
 const userSchema = Schema({
     number: {
+
         type: String,
         required: true
     }
