@@ -10,5 +10,6 @@ module.exports.OTP = model('otp',Schema({
         required: true
     },
     createdAt: {type: Date, default: Date.now, index: {expires:300}}
+    //otp will expire in 5 minutes
 })
 )
