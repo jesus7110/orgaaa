@@ -1,16 +1,20 @@
-const userModel = require('../models/userModel');
-//const otpGenerator = require('otp-generator');
-const { otpGen } = require('otp-gen-agent');
+const user = require('../models/user');
+const otpGenerator = require('otp-generator');
+const bcrypt = require("bcrypt");
+const axios = require("axios")
+const _= require("lodash")
+
+//const { otpGen } = require('otp-gen-agent');
 
 const createUser = async (req,res) => {
   try {
-    const exisitingUser = await userModel.findOne({ mobile: req.body.mobilenumber });
+    const exisitingUser = await user.findOne({ mobile: req.body.mobilenumber });
     if (exisitingUser) {
       return res
         .status(200)
         .send({ message: "User Already Exist", success: false });
     }
-    const newUser = new userModel(req.body);
+    const newUser = new user(req.body);
     
     await newUser.save();
     res.status(201).send({ message: "Register Sucessfully", success: true }); 
@@ -43,6 +47,7 @@ const createUser = async (req,res) => {
   }
 };*/
 
+/*
 const generateOTP = async (req,res) => {
   try{
     const otp = await otpGen({length: 5, chars: 'abc123'});
@@ -55,6 +60,6 @@ const generateOTP = async (req,res) => {
       message: `OTP Generator ${error.message}`,
     });
   }
-}
+}*/
 
 module.exports = { createUser, generateOTP};

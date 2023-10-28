@@ -1,18 +1,19 @@
-const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
-  mobilenumber: { type: String },
-  emailid: { type: String},
-  isavailable: { type: Boolean, default: true },
-  homeno: { type: String },
-  streetname: { type: String },
-  landmark: { type: String },
-  pincode: { type: String },
-  city: { type: String },
-  state: { type: String },
-  
-  
-});
+const { Schema, model } =require('mongoose');
+const jwt = require('jsonwebtoken');
 
-const userModel = mongoose.model('users', userSchema);
-module.exports = userModel;
+const userSchema = Schema({
+    number: {
+        type: String,
+        required: true
+    }
+}, {timestamps:true});
+
+userSchema.methods.generateJWT = function () {
+    const token = jwt.sign({
+        _id: this._id,
+        number: this.number
+    },process.env.JWT_SECRET_KEY,{expiresIn:"7d"})
+}
+
+module.exports.users = model('User', userSchema);
