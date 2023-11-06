@@ -5,4 +5,4 @@ router.route('/addproduct')
     .post(addProduct);
 
 
-module.exports = productrouter;
+module.exports = router;
