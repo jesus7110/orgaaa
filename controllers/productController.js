@@ -105,6 +105,16 @@ const searchProducts = async (req, res) => {
     return res.status(500).json({ success: false, message: 'An error occurred while searching for products.', error });
   }
 };
+//Function to get product by category
+const getProductsByCategory = async (req, res) => {
+  try {
+    const category = req.params.category; // Assuming the category is passed as a route parameter
+    const products = await product.find({ category });
+    return res.status(200).json({ success: true, data: products });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'An error occurred while fetching products by category.', error });
+  }
+};
 
 
 
