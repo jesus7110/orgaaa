@@ -162,6 +162,20 @@ const getNewestProducts = async (req, res) => {
 };
 
 
+//Function to return a list of top-selling products based on sales data
+const getTopSellingProducts = async (req, res) => {
+  try {
+    // Implement your logic to fetch top-selling products here
+    // You may need to have a sales data or order history to determine top-selling products
+    const products = await product.find({}).limit(10); // For example, return the top 10 products for now
+    return res.status(200).json({ success: true, data: products });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'An error occurred while fetching top-selling products.', error });
+  }
+};
+
+
+
 module.exports = {
   addProduct, 
   getallProduct,
@@ -173,5 +187,6 @@ module.exports = {
   getProductsByPriceRange,
   getProductCount,
   getFeaturedProducts,
-  getNewestProducts
+  getNewestProducts,
+  getTopSellingProducts
 };
