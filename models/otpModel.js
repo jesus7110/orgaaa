@@ -1,15 +1,15 @@
-const {Schema, model} = require("mongoose");
+const { Schema, model } = require("mongoose");
 
-module.exports.OTP = model('otp',Schema({
+module.exports.Otp = model('Otp', Schema({
     number: {
-        type:String,
+        type: String,
         required: true
     },
     otp: {
         type: String,
         required: true
     },
-    createdAt: {type: Date, default: Date.now, index: {expires:300}}
-    //otp will expire in 5 minutes
-})
-)
+    createdAt: { type: Date, default: Date.now, index: { expires: 300 } }
+
+    // After 5 minutes it deleted automatically from the database
+}, { timestamps: true }))
