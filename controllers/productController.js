@@ -42,7 +42,25 @@ const getallProduct = async (req, res) => {
   }
 };
 
+//product ID to be passed as a route parameter (e.g., /products/:id)
+// Function to get a product by its ID
+const getProductById = async (req, res) => {
+  try {
+    const productId = req.params.id; // Assuming the product ID is passed as a route parameter
+
+    const foundProduct = await product.findOne({ productid: productId });
+
+    if (foundProduct) {
+      return res.status(200).json({ success: true, data: foundProduct });
+    } else {
+      return res.status(404).json({ success: false, message: 'Product not found' });
+    }
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'An error occurred while fetching the product.', error });
+  }
+};
+
 
 module.exports = {
-  addProduct, getallProduct
+  addProduct, getallProduct,getProductById
 };
