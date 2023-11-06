@@ -139,12 +139,25 @@ const getProductCount = async (req, res) => {
 };
 
 // to retrieve featured products
+
+/* comment: update "isFeatured" in Schemma*/
+
 const getFeaturedProducts = async (req, res) => {
   try {
     const products = await product.find({ isFeatured: true }); // Assuming you have an "isFeatured" field in your schema
     return res.status(200).json({ success: true, data: products });
   } catch (error) {
     return res.status(500).json({ success: false, message: 'An error occurred while fetching featured products.', error });
+  }
+};
+
+// to fetch the latest products added to the database
+const getNewestProducts = async (req, res) => {
+  try {
+    const products = await product.find().sort({ dateAdded: -1 }).limit(10); // Assuming you have a "dateAdded" field in your schema
+    return res.status(200).json({ success: true, data: products });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'An error occurred while fetching the newest products.', error });
   }
 };
 
@@ -159,5 +172,6 @@ module.exports = {
   getProductsByCategory,
   getProductsByPriceRange,
   getProductCount,
-  getFeaturedProducts
+  getFeaturedProducts,
+  getNewestProducts
 };
