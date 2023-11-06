@@ -128,6 +128,25 @@ const getProductsByPriceRange = async (req, res) => {
   }
 };
 
+//Function total number of products in the database
+const getProductCount = async (req, res) => {
+  try {
+    const count = await product.countDocuments();
+    return res.status(200).json({ success: true, data: count });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'An error occurred while fetching the product count.', error });
+  }
+};
+
+// to retrieve featured products
+const getFeaturedProducts = async (req, res) => {
+  try {
+    const products = await product.find({ isFeatured: true }); // Assuming you have an "isFeatured" field in your schema
+    return res.status(200).json({ success: true, data: products });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'An error occurred while fetching featured products.', error });
+  }
+};
 
 
 module.exports = {
@@ -138,5 +157,7 @@ module.exports = {
   deleteProduct, 
   searchProducts,
   getProductsByCategory,
-  getProductsByPriceRange
+  getProductsByPriceRange,
+  getProductCount,
+  getFeaturedProducts
 };
