@@ -1,5 +1,7 @@
 const router = require('express').Router();
-const { addProduct, getallProduct, getProductById, updateProduct, deleteProduct } = require('../controllers/productController');
+const { addProduct, getallProduct, getProductById, updateProduct, deleteProduct,searchProducts,
+    getProductsByCategory, getProductsByPriceRange, getProductCount, getFeaturedProducts, getNewestProducts,
+    getTopSellingProducts } = require('../controllers/productController');
 
 router.route('/addproduct')
     .post(addProduct);
@@ -21,5 +23,33 @@ router.route('/product/:id')
   // Route for deleting a product by its ID
 router.route('/product/:id')
 .delete(deleteProduct); // Using the DELETE method for deleting a product
+
+// Route for searching products by name or category
+router.route('/searchProducts')
+.get(searchProducts);
+
+// Route for getting products by category
+router.route('/getProductsByCategory/:category')
+  .get(getProductsByCategory);
+
+// Route for getting products by price range
+router.route('/getProductsByPriceRange')
+  .get(getProductsByPriceRange);
+
+// Route for getting the total number of products
+router.route('/getProductCount')
+  .get(getProductCount);
+
+// Route for getting featured products
+router.route('/getFeaturedProducts')
+  .get(getFeaturedProducts);
+
+// Route for getting the newest products
+router.route('/getNewestProducts')
+  .get(getNewestProducts);
+
+// Route for getting top-selling products
+router.route('/getTopSellingProducts')
+  .get(getTopSellingProducts);
 
 module.exports = router;
