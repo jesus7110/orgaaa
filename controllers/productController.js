@@ -116,6 +116,17 @@ const getProductsByCategory = async (req, res) => {
   }
 };
 
+//Function fetch products within a certain price range 
+const getProductsByPriceRange = async (req, res) => {
+  try {
+    const minPrice = req.query.minPrice; // Assuming minimum price is passed as a query parameter
+    const maxPrice = req.query.maxPrice; // Assuming maximum price is passed as a query parameter
+    const products = await product.find({ price: { $gte: minPrice, $lte: maxPrice } });
+    return res.status(200).json({ success: true, data: products });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'An error occurred while fetching products by price range.', error });
+  }
+};
 
 
 
