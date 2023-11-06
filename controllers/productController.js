@@ -60,7 +60,26 @@ const getProductById = async (req, res) => {
   }
 };
 
+// Function to update a product by its ID
+const updateProduct = async (req, res) => {
+  try {
+    const productId = req.params.id; // Assuming the product ID is passed as a route parameter
+    const updatedProductData = req.body; // Assuming the updated product data is sent in the request body
+
+    const updatedProduct = await product.findOneAndUpdate({ productid: productId }, updatedProductData, { new: true });
+
+    if (updatedProduct) {
+      return res.status(200).json({ success: true, message: 'Product updated successfully', data: updatedProduct });
+    } else {
+      return res.status(404).json({ success: false, message: 'Product not found' });
+    }
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'An error occurred while updating the product.', error });
+  }
+};
+
+
 
 module.exports = {
-  addProduct, getallProduct,getProductById
+  addProduct, getallProduct,getProductById, updateProduct
 };
