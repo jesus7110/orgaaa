@@ -16,13 +16,14 @@ module.exports.signUp = async (req, res) => {
         digits: true, alphabets: false, upperCase: false, specialChars: false
     });
     const number = req.body.number;
-    const greenwebsms = new URLSearchParams();
-    greenwebsms.append('token', '05fa33c4cb50c35f4a258e85ccf50509');
-    greenwebsms.append('to', `+${number}`);
-    greenwebsms.append('message', `Verification Code ${OTP}`);
-    axios.post('http://api.greenweb.com.bd/api.php', greenwebsms).then(response => {
+  //  const smsservice = new URLSearchParams();
+   // smsservice.append('token', '05fa33c4cb50c35f4a258e85ccf50509');
+   // smsservice.append('to', `+${number}`);
+    //smsservice.append('message', `Verification Code ${OTP}`);
+   /** axios.post('http://api.greenweb.com.bd/api.php', smsservice).then(response => {
         console.log(response.data);
-    });
+    }); */
+    console.log(OTP);
     const otp = new Otp({ number: number, otp: OTP });
     const salt = await bcrypt.genSalt(10)
     otp.otp = await bcrypt.hash(otp.otp, salt);
