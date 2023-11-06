@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { addProduct, getallProduct, getProductById } = require('../controllers/productController');
+const { addProduct, getallProduct, getProductById, updateProduct } = require('../controllers/productController');
 
 router.route('/addproduct')
     .post(addProduct);
@@ -15,6 +15,6 @@ router.route('/product/:id')
 
 // Route for updating a product by its ID
 router.route('/product/:id')
-  .put(productController.updateProduct); // Using the PUT method for updating a product
+  .put(updateProduct); // Using the PUT method for updating a product
 
 module.exports = router;
