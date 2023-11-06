@@ -95,8 +95,27 @@ const deleteProduct = async (req, res) => {
   }
 };
 
+//Function to search Product
+const searchProducts = async (req, res) => {
+  try {
+    const searchTerm = req.query.searchTerm; // Assuming the search term is passed as a query parameter
+    const products = await product.find({ $or: [{ productname: new RegExp(searchTerm, 'i') }, { category: new RegExp(searchTerm, 'i') }] });
+    return res.status(200).json({ success: true, data: products });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'An error occurred while searching for products.', error });
+  }
+};
+
+
 
 
 module.exports = {
-  addProduct, getallProduct,getProductById, updateProduct, deleteProduct
+  addProduct, 
+  getallProduct,
+  getProductById, 
+  updateProduct, 
+  deleteProduct, 
+  searchProducts,
+  getProductsByCategory,
+  getProductsByPriceRange
 };
