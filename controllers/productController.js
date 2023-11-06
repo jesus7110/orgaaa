@@ -1,34 +1,12 @@
-const mongoose = require('mongoose');
+const { Product } = require('../models/productModel');
 
-const productSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-  },
-  category: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  quantity: {
-    type: Number,
-    required: true,
-  },
-  image: {
-    type: String,
-  },
-  dateAdded: {
-    type: Date,
-    default: Date.now,
-  },
-});
-
-const Product = mongoose.model('Product', productSchema);
-
-module.exports = Product;
+module.exports.addProduct = async (req, res) => {
+  const product = await Product.findOne({
+    productid: req.body.productid
+  });
+  if (product) return res.status(400).send("Product already exists!");
+  
+  
+  
+  return res.status(200).send("Product Saved successfully!");
+}
