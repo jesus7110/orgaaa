@@ -5,7 +5,7 @@ module.exports.addProduct = async (req, res) => {
     productid: req.body.productid
   });
   if (product) return res.status(400).send("Product already exists!");
-  
+  const result = await product.save();
   
   
   return res.status(200).send("Product Saved successfully!");
