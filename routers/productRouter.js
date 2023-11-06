@@ -12,4 +12,9 @@ router.route('/getallproduct')
 router.route('/product/:id')
 .get(getProductById);
 
+
+// Route for updating a product by its ID
+router.route('/product/:id')
+  .put(productController.updateProduct); // Using the PUT method for updating a product
+
 module.exports = router;
