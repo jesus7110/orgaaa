@@ -78,8 +78,25 @@ const updateProduct = async (req, res) => {
   }
 };
 
+// Function to delete a product by its ID
+const deleteProduct = async (req, res) => {
+  try {
+    const productId = req.params.id; // Assuming the product ID is passed as a route parameter
+
+    const deletedProduct = await product.findOneAndRemove({ productid: productId });
+
+    if (deletedProduct) {
+      return res.status(200).json({ success: true, message: 'Product deleted successfully', data: deletedProduct });
+    } else {
+      return res.status(404).json({ success: false, message: 'Product not found' });
+    }
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'An error occurred while deleting the product.', error });
+  }
+};
+
 
 
 module.exports = {
-  addProduct, getallProduct,getProductById, updateProduct
+  addProduct, getallProduct,getProductById, updateProduct, deleteProduct
 };
