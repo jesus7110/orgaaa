@@ -5,7 +5,7 @@ const {addToCart, getCart, removeFromCart, updateCartItemQuantity} = require('..
 
 // Route to add an item to the user's cart
 
-/* middleware to check authenticity of user must be handled properly */
+/* middleware to check authenticity of user must be handled properly  */
 router.route('/cart/add/:userId')
   .post(addToCart);
 
