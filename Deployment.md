@@ -44,7 +44,7 @@ sudo ufw enable
 sudo ufw status
 sudo ufw allow ssh (Port 22)
 sudo ufw allow http (Port 80)
-sudo ufw allow https (Port 443)
+
 ```
 
 ## 7. Install NGINX and configure
