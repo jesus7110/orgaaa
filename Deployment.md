@@ -9,3 +9,9 @@ Create free AWS Account at https://aws.amazon.com/
 I would be creating a t2.medium ubuntu machine for this demo.
 
 ## 3. Install Node and NPM
+```
+curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install nodejs
+
+node --version
+```
