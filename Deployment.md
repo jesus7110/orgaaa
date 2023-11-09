@@ -15,3 +15,7 @@ sudo apt install nodejs
 
 node --version
 ```
+
+## 4. Clone your project from Github
+-dry-run
+```
