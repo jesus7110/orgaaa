@@ -40,7 +40,7 @@ pm2 startup ubuntu
 
 ## 6. Setup Firewall
 ```
-sudo ufw enable
+
 sudo ufw status
 sudo ufw allow ssh (Port 22)
 sudo ufw allow http (Port 80)
