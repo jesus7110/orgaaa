@@ -177,7 +177,7 @@ const getTopSellingProducts = async (req, res) => {
 
 
 module.exports = {
- `````` addProduct, 
+  addProduct, 
   getallProduct,
   getProductById, 
   updateProduct, 
@@ -189,4 +189,4 @@ module.exports = {
   getFeaturedProducts,
   getNewestProducts,
   getTopSellingProducts
-};``````
+};
