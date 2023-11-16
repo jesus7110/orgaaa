@@ -15,6 +15,19 @@ module.exports.addProduct = async (req, res) => {
 }
 */
 
+//Storage
+
+const  Storage = multer.diskStorage({
+  destination: "uploads",
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+//image 
+
+
+
 // Function to add a product to the database
 const addProduct = async (req, res) => {
   try {
