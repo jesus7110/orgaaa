@@ -29,6 +29,9 @@ const productSchema = Schema({
   isFeatured: {
     type: Boolean,
   },
+  images:{
+    type: [String],
+  },
   dateAdded: {
     type: Date,
     default: Date.now,
