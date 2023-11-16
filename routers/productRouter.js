@@ -3,6 +3,10 @@ const { addProduct, getallProduct, getProductById, updateProduct, deleteProduct,
     getProductsByCategory, getProductsByPriceRange, getProductCount, getFeaturedProducts, getNewestProducts,
     getTopSellingProducts } = require('../controllers/productController');
 
+
+const uploadImage = require('../middlewares/imageupload')
+
+
 router.route('/addproduct')
     .post(addProduct);
 
