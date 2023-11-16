@@ -1,4 +1,6 @@
 const { product } = require('../models/productModel');
+const  multer = require('multer')
+
 
 /*
 module.exports.addProduct = async (req, res) => {
