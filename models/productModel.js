@@ -30,7 +30,8 @@ const productSchema = Schema({
     type: Boolean,
   },
   images:{
-    type: [String],
+    data: Buffer,
+    contentType: [String],
   },
   dateAdded: {
     type: Date,
