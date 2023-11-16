@@ -24,7 +24,8 @@ const  Storage = multer.diskStorage({
   },
 });
 
-//image 
+//image upload
+const upload = 
 
 
 
