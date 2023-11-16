@@ -7,8 +7,10 @@ const { addProduct, getallProduct, getProductById, updateProduct, deleteProduct,
 const upload = require('../middlewares/imageupload')
 
 
-router.route('/addproduct')
-    .post(upload.single('avatar'),addProduct);
+//router.route('/addproduct')
+//    .post(upload.single('avatar'),addProduct);
+
+router.post('/addproduct',upload.single('image'),addProduct)
 
 router.route('/getallproduct')
     .post(getallProduct);
