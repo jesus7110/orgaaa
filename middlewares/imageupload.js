@@ -19,4 +19,5 @@ var upload =multer ({
             file.mimetype == "image/png" ||
             file.mimetype == "image/jpg" 
         ){
-            
+            callback(null,true)
+        }
