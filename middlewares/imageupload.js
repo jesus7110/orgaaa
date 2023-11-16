@@ -12,4 +12,4 @@ var storage = multer.diskStorage({
 })
 
 
-var upload =multer
+var upload =multer ({
