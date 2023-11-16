@@ -4,11 +4,11 @@ const { addProduct, getallProduct, getProductById, updateProduct, deleteProduct,
     getTopSellingProducts } = require('../controllers/productController');
 
 
-const uploadImage = require('../middlewares/imageupload')
+const upload = require('../middlewares/imageupload')
 
 
 router.route('/addproduct')
-    .post(addProduct);
+    .post(upload.single('avatar'),addProduct);
 
 router.route('/getallproduct')
     .post(getallProduct);
