@@ -10,8 +10,3 @@ var storage = multer.diskStorage({
         cb(null, Date.now() + ext)
     }
 })
-
-var upload =multer ({
-    storage: storage,
-    fileFilter: function
-})
