@@ -5,7 +5,15 @@ const userSchema = Schema({
     number: {
         type: String,
         required: true
-    }
+    },
+    emailid: { type: String},
+    isavailable: { type: Boolean, default: false },
+    homeno: { type: String },
+    streetname: { type: String },
+    landmark: { type: String },
+    pincode: { type: String },
+    city: { type: String },
+    state: { type: String },
 }, { timestamps: true });
 
 userSchema.methods.generateJWT = function () {
