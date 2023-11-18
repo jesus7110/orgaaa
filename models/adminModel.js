@@ -17,5 +17,5 @@
     role: {
         type: String,
         default: 'Admin1'
-    }
+    },
  })
