@@ -7,10 +7,11 @@ const { Admin } = require('../models/adminModel');
 
 
 
-module.exports.admin = async (req, res) => {
+module.exports.adminSignup = async (req, res) => {
     const admin = await Admin.findOne({
         username: req.body.username
     });
 
+    if (admin) return res.status(400).send("Admin  already existed!");
     
 }
