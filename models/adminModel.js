@@ -7,6 +7,7 @@
         require: true 
     },
     password: {
-        
+        type:String,
+        required: true
     }
  })
