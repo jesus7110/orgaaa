@@ -1,1 +1,1 @@
- 
+ const { Schema, model }
