@@ -10,5 +10,8 @@
         type:String,
         required: true
     },
-    role: 
+    role: {
+        type: String,
+        default: 'Admin1'
+    }
  })
