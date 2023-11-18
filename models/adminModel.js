@@ -9,5 +9,6 @@
     password: {
         type:String,
         required: true
-    }
+    },
+    role: 
  })
