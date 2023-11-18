@@ -10,6 +10,10 @@
         type:String,
         required: true
     },
+    canCreateAdmin: {
+        type: Boolean,
+        default: false
+    }
     role: {
         type: String,
         default: 'Admin1'
