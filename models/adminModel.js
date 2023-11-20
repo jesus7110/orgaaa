@@ -20,4 +20,19 @@
     },
  })
 
+ // Set up a method to generate an access token with a 2-hour expiration
+adminSchema.methods.generateAccessToken = function () {
+    const token = jwt.sign(
+      {
+        _id: this._id,
+        username: this.username,
+        role: this.role,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: '2h' } // Token will expire in 2 hours
+    );
+  
+    this.accessToken = token; // Store the generated token in the accessToken field
+    return token;
+  };
  module.exports.Admin = model('Admin', adminSchema);
