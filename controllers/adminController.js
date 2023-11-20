@@ -26,5 +26,7 @@ module.exports.adminSignup = async (req, res) => {
 }
 
 module.exports.adminLogin = async (req, res) => {
-    const admin = 
+    const admin = await Admin.findOne({
+        username: req.body.username
+    });
 }
