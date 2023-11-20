@@ -19,3 +19,5 @@
         default: 'Admin1'
     },
  })
+
+ module.exports.Admin = model('Admin', adminSchema);
