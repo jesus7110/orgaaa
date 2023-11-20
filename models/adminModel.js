@@ -26,7 +26,6 @@ adminSchema.methods.generateAccessToken = function () {
       {
         _id: this._id,
         username: this.username,
-        role: this.role,
       },
       process.env.JWT_SECRET,
       { expiresIn: '2h' } // Token will expire in 2 hours
@@ -35,4 +34,5 @@ adminSchema.methods.generateAccessToken = function () {
     this.accessToken = token; // Store the generated token in the accessToken field
     return token;
   };
+
  module.exports.Admin = model('Admin', adminSchema);
