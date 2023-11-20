@@ -3,7 +3,7 @@ const _ = require("lodash")
 const axios = require("axios")
 con
 
-const { Adm}
+const { Admin } = require('../models/adminModel')
 
 
 const { Admin } = require('../models/adminModel');
