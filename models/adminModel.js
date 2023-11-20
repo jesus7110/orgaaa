@@ -1,5 +1,5 @@
  const { Schema, model } = require('mongoose')
-
+ const jwt = require('jsonwebtoken')
 
  const adminSchema = Schema({
     username: {
@@ -18,6 +18,9 @@
         type: String,
         default: 'Admin1'
     },
+    accessToken: {
+        type: String
+    }
  })
 
  // Set up a method to generate an access token with a 2-hour expiration

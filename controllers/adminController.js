@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt")
 const _ = require("lodash")
 const axios = require("axios")
+const jwt = require('jsonwebtoken')
 
 
 const { Admin } = require('../models/adminModel')
@@ -40,14 +41,17 @@ module.exports.adminLogin = async (req, res) => {
       if (!isPasswordValid) {
         return res.status(401).json({ success: false, message: 'Invalid password' });
       }
-      
+
       // Generate and store an access token with a 2-hour expiration
     const accessToken = admin.generateAccessToken();
+    console.log(accessToken);
     await admin.save();
-  
+      
+
       // Log in successful
       return res.status(200).json({ success: true, message: 'Admin logged in successfully', data: admin });
     } catch (error) {
+      console.error('error in admin login: ', error)
       return res.status(500).json({ success: false, message: 'An error occurred during admin login.', error });
     }
   };
