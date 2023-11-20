@@ -25,4 +25,6 @@ module.exports.adminSignup = async (req, res) => {
     
 }
 
-module.exports.adminLogin = async
+module.exports.adminLogin = async (req, res) => {
+    const admin = 
+}
