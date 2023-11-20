@@ -26,7 +26,26 @@ module.exports.adminSignup = async (req, res) => {
 }
 
 module.exports.adminLogin = async (req, res) => {
-    const admin = await Admin.findOne({
-        username: req.body.username
-    });
-}
+    try {
+      const { username, password } = req.body;
+  
+      // Check if the admin exists
+      const admin = await Admin.findOne({ username });
+  
+      if (!admin) {
+        return res.status(404).json({ success: false, message: 'Admin not found' });
+      }
+  
+      // Check if the provided password is correct
+      const isPasswordValid = await bcrypt.compare(password, admin.password);
+  
+      if (!isPasswordValid) {
+        return res.status(401).json({ success: false, message: 'Invalid password' });
+      }
+  
+      // Log in successful
+      return res.status(200).json({ success: true, message: 'Admin logged in successfully', data: admin });
+    } catch (error) {
+      return res.status(500).json({ success: false, message: 'An error occurred during admin login.', error });
+    }
+  };

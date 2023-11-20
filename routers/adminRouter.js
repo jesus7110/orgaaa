@@ -1,4 +1,7 @@
 const router = require('express').Router()
-const {adminSignup} = require('../controllers/adminController')
+const {adminSignup, adminLogin} = require('../controllers/adminController')
 
-router.route('').post(adminSignup);
+router.route('/registeradmin').post(adminSignup);
+router.route('/loginadmin').post(adminLogin);
+
+module.exports = router;
