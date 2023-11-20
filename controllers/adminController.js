@@ -6,9 +6,6 @@ con
 const { Admin } = require('../models/adminModel')
 
 
-const { Admin } = require('../models/adminModel');
-
-
 
 module.exports.adminSignup = async (req, res) => {
     const admin = await Admin.findOne({
@@ -17,8 +14,13 @@ module.exports.adminSignup = async (req, res) => {
 
     if (admin) return res.status(400).send("Admin  already existed!");
 
-    const newadmin = 
+    const newadmin = new Admin({ username:username, password: password });
+
+
     const salt = await bcrypt.genSalt(10)
-    const password = await bcrypt.hast()
+    const password = await bcrypt.hash(password:)
+
+    const result = await newadmin.save();
+    return res.status(200).send("Admin saved Successfully");
     
 }
