@@ -2,7 +2,7 @@
 
 
  const adminSchema = Schema({
-    usename: {
+    username: {
         type: String,
         require: true 
     },
