@@ -24,3 +24,5 @@ module.exports.adminSignup = async (req, res) => {
     return res.status(200).send("Admin saved Successfully");
     
 }
+
+module.exports.adminLogin = async
