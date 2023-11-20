@@ -13,5 +13,7 @@ module.exports.adminSignup = async (req, res) => {
     });
 
     if (admin) return res.status(400).send("Admin  already existed!");
+
+    const password = await bcrypt
     
 }
