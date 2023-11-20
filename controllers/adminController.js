@@ -18,7 +18,7 @@ module.exports.adminSignup = async (req, res) => {
 
 
     const salt = await bcrypt.genSalt(10)
-    const password = await bcrypt.hash(password:)
+    const password = await bcrypt.hash(newadmin.password, salt)
 
     const result = await newadmin.save();
     return res.status(200).send("Admin saved Successfully");
