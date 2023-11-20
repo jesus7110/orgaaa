@@ -18,9 +18,6 @@
         type: String,
         default: 'Admin1'
     },
-    accessToken: {
-        type: String
-    }
  })
 
  // Set up a method to generate an access token with a 2-hour expiration
