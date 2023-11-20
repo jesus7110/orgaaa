@@ -14,6 +14,7 @@ module.exports.adminSignup = async (req, res) => {
 
     if (admin) return res.status(400).send("Admin  already existed!");
 
+    const salt = await bcrypt.genSalt(10)
     const password = await bcrypt
     
 }
