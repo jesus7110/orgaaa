@@ -27,7 +27,7 @@ adminSchema.methods.generateAccessToken = function () {
         _id: this._id,
         username: this.username,
       },
-      process.env.JWT_SECRET,
+      process.env.JWT_SECRET_KEY,
       { expiresIn: '2h' } // Token will expire in 2 hours
     );
   

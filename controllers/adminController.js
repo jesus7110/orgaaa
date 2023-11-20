@@ -40,6 +40,10 @@ module.exports.adminLogin = async (req, res) => {
       if (!isPasswordValid) {
         return res.status(401).json({ success: false, message: 'Invalid password' });
       }
+      
+      // Generate and store an access token with a 2-hour expiration
+    const accessToken = admin.generateAccessToken();
+    await admin.save();
   
       // Log in successful
       return res.status(200).json({ success: true, message: 'Admin logged in successfully', data: admin });
