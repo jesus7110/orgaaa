@@ -1,6 +1,9 @@
 const bcrypt = require("bcrypt")
 const _ = require("lodash")
 const axios = require("axios")
+con
+
+const { Adm}
 
 
 const { Admin } = require('../models/adminModel');
@@ -14,7 +17,8 @@ module.exports.adminSignup = async (req, res) => {
 
     if (admin) return res.status(400).send("Admin  already existed!");
 
+    const newadmin = 
     const salt = await bcrypt.genSalt(10)
-    const password = await bcrypt
+    const password = await bcrypt.hast()
     
 }
