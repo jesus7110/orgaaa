@@ -3,14 +3,14 @@ const { addProduct, getallProduct, getProductById, updateProduct, deleteProduct,
     getProductsByCategory, getProductsByPriceRange, getProductCount, getFeaturedProducts, getNewestProducts,
     getTopSellingProducts } = require('../controllers/productController');
 
-
+const { authenticateToken, authorizeAdmin } = require ('../middlewares/authMiddleware')
 const upload = require('../middlewares/imageupload')
 
 
 //router.route('/addproduct')
 //    .post(upload.single('avatar'),addProduct);
 
-router.post('/addproduct',upload.single('image'),addProduct)
+router.post('/addproduct',authenticateToken,authorizeAdmin,upload.single('image'),addProduct)
 
 router.route('/getallproduct')
     .post(getallProduct);
