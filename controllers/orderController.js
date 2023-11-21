@@ -1,6 +1,6 @@
 const { Order } = require('../models/orderModel');
 const { User } = require('../models/userModel');
-const { Product } = require('./yourProductModel');
+const { Product } = require('../models/productModel');
 
 // Controller for placing an order by a user
 module.exports.placeOrder = async (req, res) => {
