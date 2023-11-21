@@ -1,5 +1,5 @@
 const { Order } = require('../models/orderModel');
-const { User } = require('../mode');
+const { User } = require('../models/userModel');
 const { Product } = require('./yourProductModel');
 
 // Controller for placing an order by a user
