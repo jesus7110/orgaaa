@@ -64,7 +64,7 @@ module.exports.updateOrderStatus = async (req, res) => {
     // Only allow admin to update the status
     // You may need to implement a more robust authentication and authorization mechanism
     // This is just a simple example
-    if (req.user.role !== 'admin') {
+    if (req.user.role !== 'admin1') {
       return res.status(403).json({ success: false, message: 'Forbidden: Admin access only' });
     }
 
