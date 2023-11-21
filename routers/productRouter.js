@@ -23,12 +23,12 @@ router.route('/product/:id')
 
 // Route for updating a product by its ID
 router.route('/product/:id')
-  .put(updateProduct); // Using the PUT method for updating a product
+  .put(authenticateToken,authorizeAdmin,updateProduct); // Using the PUT method for updating a product
 
 
   // Route for deleting a product by its ID
 router.route('/product/:id')
-.delete(deleteProduct); // Using the DELETE method for deleting a product
+.delete(authenticateToken,authorizeAdmin,deleteProduct); // Using the DELETE method for deleting a product
 
 // Route for searching products by name or category
 router.route('/searchProducts')
