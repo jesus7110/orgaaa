@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { placeOrder, updateOrderStatus } = require('./yourOrderController');
-const { authenticateUserToken, authorizeAdmin } = require('./yourAuthMiddleware'); // Include your authentication middleware
+const { authenticateUserToken, authenticateToken, authorizeAdmin } = require('./yourAuthMiddleware'); // Include your authentication middleware
 
 // Route to place an order by a user
 router.post('/placeOrder', authenticateToken, placeOrder);
