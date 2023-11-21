@@ -5,37 +5,40 @@ const { Product } = require('../models/productModel');
 // Controller for placing an order by a user
 module.exports.placeOrder = async (req, res) => {
   try {
-    const { userId, products, totalAmount, paymentMethod, shippingAddress } = req.body;
+    const { userId,number, products, totalAmount, paymentMethod, shippingAddress } = req.body;
 
     // Validate if the user exists
-    const user = await User.findById(userId);
+    const user = await User.findOne({
+        number
+    });
     if (!user) {
       return res.status(404).json({ success: false, message: 'User not found' });
     }
 
     // Validate if products exist and get their details
-    const productsDetails = await Promise.all(
-      products.map(async (product) => {
-        const productDetails = await Product.findById(product.productId);
-        if (!productDetails) {
-          return res.status(404).json({
-            success: false,
-            message: `Product with ID ${product.productId} not found`,
-          });
-        }
+    // const productsDetails = await Promise.all(
+    //   products.map(async (product) => {
+    //     const productDetails = await Product.findById(products.productId);
+    //     if (!productDetails) {
+    //       return res.status(404).json({
+    //         success: false,
+    //         message: `Product with ID ${product.productId} not found`,
+    //       });
+    //     }
 
-        return {
-          productId: productDetails._id,
-          quantity: product.quantity,
-          price: productDetails.price,
-        };
-      })
-    );
+    //     return {
+    //       productId: productDetails._id,
+    //       quantity: product.quantity,
+    //       price: productDetails.price,
+    //     };
+    //   })
+    // );
 
     // Create the order
     const order = new Order({
       userId,
-      products: productsDetails,
+      number,
+      products,
       totalAmount,
       paymentMethod,
       shippingAddress,

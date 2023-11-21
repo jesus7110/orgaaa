@@ -6,6 +6,10 @@ const orderSchema = Schema({
     ref: 'User', // Reference to the User model
     required: true,
   },
+  number: {
+    type: String,
+    //required: true
+},
   products: [
     {
       productId: {
@@ -19,13 +23,13 @@ const orderSchema = Schema({
       },
       price: {
         type: Number,
-        required: true,
+        //required: true,
       },
     },
   ],
   totalAmount: {
     type: Number,
-    required: true,
+    //required: true,
   },
   status: {
     type: String,
@@ -51,4 +55,4 @@ const orderSchema = Schema({
   },
 });
 
-module.exports.order = model('Order', orderSchema);
+module.exports.Order = model('Order', orderSchema);

@@ -23,7 +23,7 @@ app.use(express.json());
 app.use('/api/user',userRouter)
 app.use('/api/product',productRouter)
 app.use('/api/admin',adminRouter)
-app.use('/api/product',orderRouter);
+app.use('/api/order',orderRouter);
 
 
 app.listen(process.env.PORT || 5000)
