@@ -29,6 +29,14 @@ const productSchema = Schema({
   isFeatured: {
     type: Boolean,
   },
+  vipDiscout: {
+    type: String,
+  },
+  productTag : {
+    type: String,
+    enum: ['Popular','New','Most'],
+    default: 'Popular',
+  },
   images:{
     type: String,
   },
