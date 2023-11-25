@@ -26,7 +26,7 @@ module.exports.signUp = async (req, res) => {
         number: req.body.number
     });
     if (user) return res.status(400).send("User already registered!");
-    const OTP = otpGenerator.generate(6, {
+    const OTP = otpGenerator.generate(4, {
         digits: true, alphabets: false, upperCase: false, specialChars: false
     });
     const number = req.body.number;
